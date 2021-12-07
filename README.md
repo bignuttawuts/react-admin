@@ -1,3 +1,20 @@
+## React Admin
+
+### Tech Stack
+
+- [create-react-app](https://github.com/reduxjs/cra-template-redux) with --template redux
+- [antd](https://ant.design/), [@ant-design/icons](https://ant.design/)
+- [react-router-dom](https://reactrouter.com/docs/en/v6/getting-started/installation)
+
+### Tech Stack
+
+- Setting [Project Structure](https://dev.to/syakirurahman/react-project-structure-best-practices-for-scalable-application-18kk)
+- Setting Route
+- Demo Ant Design Layout and Component
+- Demo call API
+
+## create-react-app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
