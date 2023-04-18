@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './app/store'
 import { increment } from './features/counter/counterSlice'
@@ -11,6 +10,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Item from './features/items/pages/Item'
+import ItemList from './features/items/pages/ItemList'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -42,7 +43,7 @@ function App() {
 
         <h4>Ant Design</h4>
         <DatePicker />
-        <h4>React Router</h4>
+        <h4>React Router v6</h4>
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
@@ -51,7 +52,8 @@ function App() {
         </nav>
         <Routes>
           <Route path='/' element={<div>Home page</div>} />
-          <Route path='/items' element={<div>Items page</div>} />
+          <Route path='/items' element={<ItemList />} />
+          <Route path='/items/:id' element={<Item />} />
         </Routes>
       </div>
     </div>
