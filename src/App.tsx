@@ -6,7 +6,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './app/store'
 import { increment } from './features/counter/counterSlice'
 import { DatePicker } from 'antd'
-
+import {
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -38,13 +42,18 @@ function App() {
 
         <h4>Ant Design</h4>
         <DatePicker />
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <h4>React Router</h4>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/items">Items</Link></li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path='/' element={<div>Home page</div>} />
+          <Route path='/items' element={<div>Items page</div>} />
+        </Routes>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   )
 }
