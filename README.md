@@ -11,6 +11,6 @@ This is a React project uses an opinionated system of folder and code organizati
 ## Checklist
 
 - [x] Create project with `npm create vite@latest` react-swc-ts template
-- [ ] Install RTK `npm install @reduxjs/toolkit`
+- [x] Install RTK `npm install @reduxjs/toolkit react-redux`
 - [ ] to do 1
 - [ ] to do 2
