@@ -5,6 +5,7 @@ import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './app/store'
 import { increment } from './features/counter/counterSlice'
+import { DatePicker } from 'antd'
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
         <button onClick={() => dispatch(increment())}>
           countValue is {countValue}
         </button>
+
+        <h4>Ant Design</h4>
+        <DatePicker />
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
