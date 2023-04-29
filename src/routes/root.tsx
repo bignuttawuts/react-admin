@@ -1,6 +1,7 @@
-import { Outlet, Link, useLoaderData, Form, redirect, NavLink, useNavigation, useSubmit } from 'react-router-dom';
-import { getContacts, createContact } from "../contacts";
 import { useEffect, useState } from 'react';
+import { Form, NavLink, Outlet, redirect, useLoaderData, useNavigation, useSubmit } from 'react-router-dom';
+
+import { createContact, getContacts } from "../contacts";
 
 export async function loader({ request }: any) {
   const url = new URL(request.url);
