@@ -15,6 +15,9 @@ import Index from './routes/contracts'
 import UserRoot from './features/users/root'
 import UserIndex from './features/users'
 import Root from './routes/root'
+import UserView, { userLoader } from './features/users/view'
+import EditUser from './features/users/edit'
+import UserEdit from './features/users/edit'
 
 const router = createBrowserRouter([
   {
@@ -51,18 +54,28 @@ const router = createBrowserRouter([
               },
             ]
           },
-          {
-            path: "users",
-            element: <UserRoot />,
-            children: [
-              { index: true, element: <UserIndex /> },
-              {
-                path: ":userId"
-              }
-            ]
-          }
         ]
       },
+      {
+        path: "/users",
+        element: <UserRoot />,
+        children: [
+          { index: true, element: <UserIndex /> },
+          {
+            path: ":contactId",
+            element: <UserView />,
+            loader: userLoader
+          },
+          {
+            path: "new",
+            element: <UserEdit />,
+          },
+          {
+            path: ":contactId/edit",
+            element: <UserEdit />,
+          }
+        ]
+      }
     ]
   },
 
