@@ -12,7 +12,7 @@ This is a React project uses an opinionated system of folder and code organizati
 
 - [x] Create project with `npm create vite@latest` react-swc-ts template
 - [x] Install Redux Toolkit `npm install @reduxjs/toolkit react-redux`
-- [x] Install Ant Design `npm install antd`
+- [x] Install Ant Design `npm install antd @ant-design/icons`
 - [x] Install React Router `npm install react-router-dom`
 - [ ] Learn from [React Router Tutorial](https://reactrouter.com/en/main/start/tutorial)
 - [ ] Install Web Client

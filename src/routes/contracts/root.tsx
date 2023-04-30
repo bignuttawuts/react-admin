@@ -6,7 +6,6 @@ export async function loader({ request }: any) {
   const url = new URL(request.url);
   const q = url.searchParams.get("q");
   const contacts = await getContacts(q);
-  console.log('reload', contacts)
   return { contacts, q };
 }
 
