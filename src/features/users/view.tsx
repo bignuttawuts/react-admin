@@ -18,13 +18,8 @@ export default function UserView() {
 
   return <>
     <Descriptions title="User Info" bordered>
-      <Descriptions.Item label="UserName">{user.first} {user.last}</Descriptions.Item>
-      <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
-      <Descriptions.Item label="Occupation">Hangzhou, Zhejiang</Descriptions.Item>
-      <Descriptions.Item label="Remark">empty</Descriptions.Item>
-      <Descriptions.Item label="Address">
-        No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
-      </Descriptions.Item>
+      <Descriptions.Item label="Firstname">{user.first}</Descriptions.Item>
+      <Descriptions.Item label="Lastname">{user.last}</Descriptions.Item>
     </Descriptions>
     <Button onClick={onEditHandle}>Edit</Button>
     <Button onClick={onDeleteHandle}>Delete</Button>

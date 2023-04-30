@@ -16,7 +16,7 @@ import UserRoot from './features/users/root'
 import UserIndex from './features/users'
 import Root from './routes/root'
 import UserView, { userLoader } from './features/users/view'
-import EditUser from './features/users/edit'
+import { userEditAction } from './features/users/edit'
 import UserEdit from './features/users/edit'
 
 const router = createBrowserRouter([
@@ -67,12 +67,9 @@ const router = createBrowserRouter([
             loader: userLoader
           },
           {
-            path: "new",
-            element: <UserEdit />,
-          },
-          {
             path: ":contactId/edit",
             element: <UserEdit />,
+            action: userEditAction,
           }
         ]
       }
