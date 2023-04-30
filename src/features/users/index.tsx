@@ -1,38 +1,73 @@
-import { Button, Table } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
+import { Button, Form, Input, Table } from 'antd';
+import { Link, useLoaderData, useNavigate, useSubmit } from 'react-router-dom';
+import { deleteContact, getContacts } from '../../servies/contacts';
 
-const columns = [
-  {
-    title: 'Username',
-    dataIndex: 'username',
-    render: (text: string, record: any) => <Link to={`/users/${record.userId}`}>{text}</Link>
-  },
-  {
-    title: 'Firstname',
-    dataIndex: 'firstname'
-  },
-  {
-    title: 'Lastname',
-    dataIndex: 'lastname'
-  }
-]
-
-const datas = [
-  {
-    userId: '4a8d7f7', username: 'admin001', firstname: 'John', lastname: 'Doe'
-  },
-  {
-    userId: '4a8d7f7', username: 'admin002', firstname: 'Sara', lastname: 'Doe'
-  }
-]
+export async function userIndexLoader() {
+  const contacts = await getContacts();
+  return { contacts };
+}
 
 export default function UserIndex() {
+  const { contacts }: any = useLoaderData();
   const navigate = useNavigate();
+  const submit = useSubmit();
+
+  const handleDelete = async (record: any) => {
+    await deleteContact(record.id);
+    submit(null, { action: "/users", method: 'GET' })
+  }
+
+  const columns = [
+    {
+      title: 'Fullname',
+      render: (text: string, record: any) => <Link to={`/users/${record.id}`}>{record.first} {record.last}</Link>
+    },
+    {
+      title: 'Firstname',
+      dataIndex: 'first'
+    },
+    {
+      title: 'Lastname',
+      dataIndex: 'last'
+    },
+    {
+      title: 'Action',
+      render: (text: string, record: any) => <Button onClick={() => handleDelete(record)}>Delete</Button>
+    }
+  ]
+
+  const onFinish = (values: any) => {
+
+  };
+
+  const onFinishFailed = (errorInfo: any) => {
+
+  };
+
   return (
-    <p>
-      Search criteria
+    <>
+      <Form
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+      >
+        <Form.Item
+          label='Firstname'
+          name='first'
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label='Lastname'
+          name='last'
+        >
+          <Input />
+        </Form.Item>
+        <Button htmlType="submit">
+          Search
+        </Button>
+      </Form>
       <Button onClick={() => navigate('/users/new')}>Create user</Button>
-      <Table dataSource={datas} columns={columns} key={'userId'} />
-    </p>
+      <Table dataSource={contacts} columns={columns} key={'userId'} />
+    </>
   );
 }

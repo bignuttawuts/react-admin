@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { Form, NavLink, Outlet, redirect, useLoaderData, useNavigation, useSubmit } from 'react-router-dom';
 import { createContact, getContacts } from '../../servies/contacts';
 
-export async function loader({ request }: any) {
+export async function rootLoader({ request }: any) {
   const url = new URL(request.url);
   const q = url.searchParams.get("q");
   const contacts = await getContacts(q);
   return { contacts, q };
 }
 
-export async function action() {
+export async function rootAction() {
   const contact = await createContact();
   return redirect(`/contacts/${contact.id}/edit`);
 }
