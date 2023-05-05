@@ -2,23 +2,28 @@ import { TeamOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu, MenuProps, theme } from 'antd';
 import Sider from 'antd/es/layout/Sider';
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, Outlet, useMatches } from 'react-router-dom';
 
 const { Header, Content, Footer } = Layout
 
 const items: MenuProps['items'] = [
-  { icon: TeamOutlined, label: 'Contact', url: '/contacts' },
-  { icon: UserOutlined, label: 'User', url: '/users' },
-].map((item, index) => ({
-  key: String(index + 1),
+  { icon: TeamOutlined, key: 'CONTACT', label: 'Contact', url: '/contacts' },
+  { icon: UserOutlined, key: 'USER', label: 'User', url: '/users' },
+].map((item) => ({
+  key: item.key,
   icon: React.createElement(item.icon),
-  label: <NavLink to={item.url} >{item.label}</NavLink>,
+  label: <Link to={item.url} >{item.label}</Link>,
 }));
 
 export default function Root() {
   const {
     token: { colorBgContainer },
   } = theme.useToken()
+  const matches = useMatches();
+  const currentMenuKeys = matches
+    .filter((match: any) => Boolean(match.handle?.menuKey))
+    .map((match: any) => match.handle.menuKey);
+
   return <Layout hasSider>
     <Sider
       style={{
@@ -31,7 +36,7 @@ export default function Root() {
       }}
     >
       <div style={{ height: 32, margin: 16, background: 'rgba(255, 255, 255, 0.2)' }} />
-      <Menu theme="dark" mode="inline" items={items} />
+      <Menu theme="dark" mode="inline" items={items} selectedKeys={currentMenuKeys} />
     </Sider>
     <Layout className="site-layout" style={{ marginLeft: 200 }}>
       <Header style={{ padding: 0, background: colorBgContainer }} />

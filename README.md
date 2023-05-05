@@ -20,5 +20,5 @@ This is a React project uses an opinionated system of folder and code organizati
 
 ## Todo list
 - [ ] Make demo app CRUD
-- [ ] Highlight current route (active link)
+- [x] Highlight current route (active link)
 - [ ] Unitest CRUD

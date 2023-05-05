@@ -7,6 +7,7 @@ import UserView, { userLoader } from './view';
 export const userRoute: RouteObject = {
   path: "/users",
   element: <UserRoot />,
+  handle: { menuKey: "USER" },
   children: [
     {
       index: true,

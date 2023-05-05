@@ -12,6 +12,7 @@ export const contactRoute: RouteObject = {
   errorElement: <ErrorPage />,
   loader: rootLoader,
   action: rootAction,
+  handle: { menuKey: "CONTACT" },
   children: [
     {
       errorElement: <ErrorPage />,
