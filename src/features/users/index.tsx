@@ -67,7 +67,7 @@ export default function UserIndex() {
         </Button>
       </Form>
       <Button onClick={() => navigate('/users/new')}>Create user</Button>
-      <Table dataSource={contacts} columns={columns} key={'userId'} />
+      <Table dataSource={contacts} columns={columns} rowKey={"id"} />
     </>
   );
 }

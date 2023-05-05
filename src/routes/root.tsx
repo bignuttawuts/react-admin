@@ -2,7 +2,7 @@ import { TeamOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu, MenuProps, theme } from 'antd';
 import Sider from 'antd/es/layout/Sider';
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const { Header, Content, Footer } = Layout
 
@@ -12,14 +12,13 @@ const items: MenuProps['items'] = [
 ].map((item, index) => ({
   key: String(index + 1),
   icon: React.createElement(item.icon),
-  label: <Link to={item.url}>{item.label}</Link>,
+  label: <NavLink to={item.url} >{item.label}</NavLink>,
 }));
 
 export default function Root() {
   const {
     token: { colorBgContainer },
-  } = theme.useToken();
-
+  } = theme.useToken()
   return <Layout hasSider>
     <Sider
       style={{
@@ -32,7 +31,7 @@ export default function Root() {
       }}
     >
       <div style={{ height: 32, margin: 16, background: 'rgba(255, 255, 255, 0.2)' }} />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
+      <Menu theme="dark" mode="inline" items={items} />
     </Sider>
     <Layout className="site-layout" style={{ marginLeft: 200 }}>
       <Header style={{ padding: 0, background: colorBgContainer }} />

@@ -18,14 +18,9 @@ export default function UserEdit() {
     submit(values, { action: `/users/${contactId}/edit`, method: 'post' })
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-  };
-
   return <>
     <Form
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
     >
       <Form.Item
         label='Firstname'
